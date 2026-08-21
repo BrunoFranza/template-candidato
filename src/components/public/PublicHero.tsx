@@ -20,34 +20,28 @@ export const PublicHero: React.FC<PublicHeroProps> = ({ hero }) => {
 
   if (hasBackgroundVideo) {
     return (
-      <section className="relative min-h-[560px] lg:min-h-[640px] flex items-center overflow-hidden bg-slate-950 text-white">
-        {/* Background Video (Desktop / Tablet) */}
+      <section className="relative min-h-[580px] lg:min-h-[660px] flex items-center overflow-hidden bg-slate-950 text-white">
+        {/* Background Video */}
         <video
           autoPlay
           muted
           loop
           playsInline
+          src={hero.background_video_url}
           poster={hero.image_url || hero.hero_image_url}
-          className="absolute inset-0 w-full h-full object-cover object-center hidden md:block"
+          className="absolute inset-0 w-full h-full object-cover object-center"
         >
           <source src={hero.background_video_url} type="video/mp4" />
         </video>
 
-        {/* Fallback Image (Mobile) */}
+        {/* Cinematic Gradient Overlay (Left dark for text readability, right clear for video & subtitles) */}
         <div
-          className="absolute inset-0 bg-cover bg-center md:hidden"
+          className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: `url(${hero.image_url || hero.hero_image_url || 'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&auto=format&fit=crop&q=80'})`,
+            background: `linear-gradient(to right, ${secondaryColor}fa 0%, ${secondaryColor}e6 30%, ${secondaryColor}88 60%, ${primaryColor}44 100%)`,
           }}
         />
-
-        {/* High-Contrast Gradient Overlay */}
-        <div
-          className="absolute inset-0 opacity-90 lg:opacity-80 transition-opacity"
-          style={{
-            background: `linear-gradient(135deg, ${secondaryColor}fa 0%, ${secondaryColor}cc 45%, ${primaryColor}99 100%)`,
-          }}
-        />
+        <div className="absolute inset-0 bg-black/25 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 relative z-10 w-full">
           <div className="max-w-3xl space-y-6">

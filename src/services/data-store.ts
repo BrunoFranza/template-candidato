@@ -406,8 +406,17 @@ class LocalDataStore {
       const { data } = await supabase.from('hero').select('*').eq('site_id', siteId).single();
       if (data) return data;
     }
+    const seed = SEED_HERO[siteId];
     const all = this.get<Record<string, HeroSection>>(STORAGE_KEYS.HERO, SEED_HERO);
-    return all[siteId] || {
+    const stored = all[siteId];
+    if (stored) {
+      return {
+        ...seed,
+        ...stored,
+        background_video_url: stored.background_video_url || seed?.background_video_url || '/hero.mp4',
+      };
+    }
+    return seed || {
       site_id: siteId,
       title: 'Compromisso com o Futuro de São Paulo',
       subtitle: 'Conheça nossos projetos, trajetória e propostas.',
