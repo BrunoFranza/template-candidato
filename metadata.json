@@ -1,0 +1,6 @@
+{
+  "name": "Plataforma White-Label de Presença Digital Eleitoral",
+  "description": "Plataforma SaaS multi-tenant para gerenciamento de sites de presença digital de campanhas eleitorais com Supabase, painel administrativo e isolamento de dados por cliente.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

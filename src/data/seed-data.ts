@@ -1,0 +1,673 @@
+import {
+  Site,
+  Profile,
+  SiteMember,
+  SiteSettings,
+  ThemeSettings,
+  HeroSection,
+  Indicator,
+  AboutSection,
+  ProposalCategory,
+  Proposal,
+  ActionItem,
+  CampaignEvent,
+  NewsArticle,
+  VideoItem,
+  GalleryItem,
+  SocialLink,
+  ContactSettings
+} from '../types';
+
+export const SEED_SITES: Site[] = [
+  {
+    id: 'site-a-uuid-carlos',
+    name: 'Campanha Dr. Carlos Guimarães',
+    slug: 'carlos-guimaraes',
+    domain: 'carlosguimaraes.eleicoes.br',
+    status: 'active',
+    created_at: '2026-01-15T10:00:00Z',
+    updated_at: '2026-08-20T10:00:00Z',
+  },
+  {
+    id: 'site-b-uuid-mariana',
+    name: 'Campanha Mariana Silveira',
+    slug: 'mariana-silveira',
+    domain: 'marianasilveira.eleicoes.br',
+    status: 'active',
+    created_at: '2026-02-01T10:00:00Z',
+    updated_at: '2026-08-20T10:00:00Z',
+  },
+];
+
+export const SEED_PROFILES: Profile[] = [
+  {
+    id: 'user-admin-a-uuid',
+    email: 'adminA@campanha.com',
+    full_name: 'Roberto Mendes (Coord. Carlos)',
+    avatar_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+    created_at: '2026-01-15T10:00:00Z',
+  },
+  {
+    id: 'user-admin-b-uuid',
+    email: 'adminB@campanha.com',
+    full_name: 'Juliana Castro (Coord. Mariana)',
+    avatar_url: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80',
+    created_at: '2026-02-01T10:00:00Z',
+  },
+  {
+    id: 'user-editor-a-uuid',
+    email: 'editorA@campanha.com',
+    full_name: 'Felipe Alcantara (Comunicação Carlos)',
+    avatar_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+    created_at: '2026-01-15T10:00:00Z',
+  },
+  {
+    id: 'user-superadmin-uuid',
+    email: 'superadmin@plataforma.com',
+    full_name: 'Suporte Plataforma White-Label',
+    avatar_url: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80',
+    created_at: '2026-01-01T10:00:00Z',
+  }
+];
+
+export const SEED_SITE_MEMBERS: SiteMember[] = [
+  {
+    id: 'mem-1',
+    site_id: 'site-a-uuid-carlos',
+    user_id: 'user-admin-a-uuid',
+    role: 'owner',
+    created_at: '2026-01-15T10:00:00Z',
+  },
+  {
+    id: 'mem-2',
+    site_id: 'site-a-uuid-carlos',
+    user_id: 'user-editor-a-uuid',
+    role: 'editor',
+    created_at: '2026-01-16T10:00:00Z',
+  },
+  {
+    id: 'mem-3',
+    site_id: 'site-b-uuid-mariana',
+    user_id: 'user-admin-b-uuid',
+    role: 'owner',
+    created_at: '2026-02-01T10:00:00Z',
+  },
+  {
+    id: 'mem-4',
+    site_id: 'site-a-uuid-carlos',
+    user_id: 'user-superadmin-uuid',
+    role: 'owner',
+    created_at: '2026-01-01T10:00:00Z',
+  },
+  {
+    id: 'mem-5',
+    site_id: 'site-b-uuid-mariana',
+    user_id: 'user-superadmin-uuid',
+    role: 'owner',
+    created_at: '2026-01-01T10:00:00Z',
+  },
+];
+
+export const SEED_SITE_SETTINGS: Record<string, SiteSettings> = {
+  'site-a-uuid-carlos': {
+    site_id: 'site-a-uuid-carlos',
+    candidate_name: 'Dr. Carlos Guimarães',
+    position: 'Deputado Federal',
+    slogan: 'Trabalho Sério, Transparência e Inovação para Nossa Gente',
+    party: 'PRC - Partido da Renovação Cidadã',
+    candidate_number: '7700',
+    coalition: 'Coligação Renovação e Progresso Social (PRC / FNT / UDC)',
+    municipality: 'São Paulo',
+    state: 'SP',
+    phone: '(11) 3456-7890',
+    whatsapp: '(11) 98765-4321',
+    email: 'contato@carlosguimaraes.com.br',
+    domain: 'carlosguimaraes.eleicoes.br',
+    logo_url: '',
+    legal_information: 'Eleição 2026 Dr. Carlos Guimarães Deputado Federal - CNPJ da Campanha: 12.345.678/0001-90 - Prestação de Contas Aberta e Transparente.',
+    cnpj: '12.345.678/0001-90',
+  },
+  'site-b-uuid-mariana': {
+    site_id: 'site-b-uuid-mariana',
+    candidate_name: 'Mariana Silveira',
+    position: 'Prefeita',
+    slogan: 'Uma Nova Cidade com Gestão Humanizada e Sustentável',
+    party: 'APF - Aliança pelo Futuro',
+    candidate_number: '44',
+    coalition: 'Coligação Juntos por Nossa Cidade (APF / CIDADANIA VIVA)',
+    municipality: 'Curitiba',
+    state: 'PR',
+    phone: '(41) 3322-1100',
+    whatsapp: '(41) 99888-7766',
+    email: 'falecom@marianasilveira.com.br',
+    domain: 'marianasilveira.eleicoes.br',
+    logo_url: '',
+    legal_information: 'Eleição 2026 Mariana Silveira Prefeita - CNPJ da Campanha: 98.765.432/0001-10 - Coligação Juntos por Nossa Cidade.',
+    cnpj: '98.765.432/0001-10',
+  },
+};
+
+export const SEED_THEME_SETTINGS: Record<string, ThemeSettings> = {
+  'site-a-uuid-carlos': {
+    site_id: 'site-a-uuid-carlos',
+    primary_color: '#0284c7', // Sky 600
+    secondary_color: '#0f172a', // Slate 900
+    accent_color: '#f59e0b', // Amber 500
+    button_style: 'rounded-full',
+    font_family: 'Plus Jakarta Sans',
+    theme_mode: 'light',
+    preset_name: 'moderno',
+  },
+  'site-b-uuid-mariana': {
+    site_id: 'site-b-uuid-mariana',
+    primary_color: '#0d9488', // Teal 600
+    secondary_color: '#1e293b', // Slate 800
+    accent_color: '#ea580c', // Orange 600
+    button_style: 'rounded-lg',
+    font_family: 'Poppins',
+    theme_mode: 'light',
+    preset_name: 'elegante',
+  },
+};
+
+export const SEED_HERO: Record<string, HeroSection> = {
+  'site-a-uuid-carlos': {
+    site_id: 'site-a-uuid-carlos',
+    title: 'Compromisso com o Futuro, Saúde de Qualidade e Educação Tecnológica',
+    subtitle: 'Médico, gestor público e defensor incansável do fortalecimento dos municípios e da modernização dos serviços essenciais.',
+    candidate_name: 'Dr. Carlos Guimarães',
+    position: 'Deputado Federal — 7700',
+    image_url: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&auto=format&fit=crop&q=80',
+    primary_button_text: 'Ver Plano de Metas',
+    primary_button_url: '/propostas',
+    secondary_button_text: 'Fale Conosco no WhatsApp',
+    secondary_button_url: '/contato',
+    badge_text: 'Compromisso, Ética e Realizações',
+    is_active: true,
+  },
+  'site-b-uuid-mariana': {
+    site_id: 'site-b-uuid-mariana',
+    title: 'Gestão Humanizada, Cidade Inteligente e Oportunidades para Todos',
+    subtitle: 'Urbanista, professora universitária e defensora de uma administração transparente, sustentável e focada nos bairros.',
+    candidate_name: 'Mariana Silveira',
+    position: 'Candidata a Prefeita — 44',
+    image_url: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80',
+    primary_button_text: 'Conheça Nossas Propostas',
+    primary_button_url: '/propostas',
+    secondary_button_text: 'Envie sua Sugestão',
+    secondary_button_url: '/contato',
+    badge_text: 'Uma Nova Visão para Nossa Capital',
+    is_active: true,
+  },
+};
+
+export const SEED_INDICATORS: Indicator[] = [
+  // Site A
+  {
+    id: 'ind-a-1',
+    site_id: 'site-a-uuid-carlos',
+    title: 'Projetos e Emendas',
+    value: '142+',
+    description: 'Projetos de lei e iniciativas com foco em saúde pública e capacitação profissional',
+    icon: 'FileText',
+    sort_order: 1,
+    is_active: true,
+  },
+  {
+    id: 'ind-a-2',
+    site_id: 'site-a-uuid-carlos',
+    title: 'Recursos Destinados',
+    value: 'R$ 84M',
+    description: 'Investimentos diretos para compra de ambulâncias, reformas de UBS e hospitais',
+    icon: 'TrendingUp',
+    sort_order: 2,
+    is_active: true,
+  },
+  {
+    id: 'ind-a-3',
+    site_id: 'site-a-uuid-carlos',
+    title: 'Municípios Atendidos',
+    value: '68',
+    description: 'Cidades visitadas e com projetos ativos de descentralização de recursos',
+    icon: 'MapPin',
+    sort_order: 3,
+    is_active: true,
+  },
+  {
+    id: 'ind-a-4',
+    site_id: 'site-a-uuid-carlos',
+    title: 'Transparência e Prestação',
+    value: '100%',
+    description: 'Todos os votos e emendas parlamentares detalhados em portal aberto',
+    icon: 'ShieldCheck',
+    sort_order: 4,
+    is_active: true,
+  },
+
+  // Site B
+  {
+    id: 'ind-b-1',
+    site_id: 'site-b-uuid-mariana',
+    title: 'Bairros Mapeados',
+    value: '75',
+    description: 'Audiências comunitárias realizadas para diagnóstico participativo',
+    icon: 'MapPin',
+    sort_order: 1,
+    is_active: true,
+  },
+  {
+    id: 'ind-b-2',
+    site_id: 'site-b-uuid-mariana',
+    title: 'Compromissos Firmados',
+    value: '50',
+    description: 'Metas prioritárias com cronograma público de execução nos primeiros 100 dias',
+    icon: 'CheckCircle2',
+    sort_order: 2,
+    is_active: true,
+  },
+  {
+    id: 'ind-b-3',
+    site_id: 'site-b-uuid-mariana',
+    title: 'Propostas Participativas',
+    value: '2.400+',
+    description: 'Sugestões enviadas por cidadãos via plataforma digital de cocriação',
+    icon: 'Users',
+    sort_order: 3,
+    is_active: true,
+  },
+];
+
+export const SEED_ABOUT: Record<string, AboutSection> = {
+  'site-a-uuid-carlos': {
+    site_id: 'site-a-uuid-carlos',
+    title: 'Conheça o Dr. Carlos Guimarães',
+    biography: 'Médico formado há mais de 25 anos com especialização em Saúde Pública e Gestão Hospitalar. Atuou na linha de frente do atendimento ao cidadão em hospitais públicos e foi gestor municipal, liderando programas premiados de combate à mortalidade infantil e informatização de postos de saúde.',
+    trajectory: 'Iniciou sua trajetória comunitária criando projetos voluntários de atendimento médico itinerante em comunidades carentes. Na vida pública, defende a ética inegociável, o combate ao desperdício do dinheiro público e a modernização da gestão legislativa.',
+    professional_info: 'Membro titular de comissões de Seguridade Social e Ciência & Tecnologia. Autor de livros e artigos sobre eficiência no SUS e orçamento participativo.',
+    quote: '"Política se faz com escuta ativa, dados concretos e coragem para colocar o interesse coletivo sempre à frente de conveniências partidárias."',
+    image_url: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=800&auto=format&fit=crop&q=80',
+    is_active: true,
+  },
+  'site-b-uuid-mariana': {
+    site_id: 'site-b-uuid-mariana',
+    title: 'Conheça Mariana Silveira',
+    biography: 'Arquiteta e Urbanista com mestrado em Planejamento Urbano e Cidades Sustentáveis. Professora com 15 anos de experiência e consultora de mobilidade urbana e habitação de interesse social para diversos municípios do Brasil e exterior.',
+    trajectory: 'Coordenou o plano diretor participativo e projetos de requalificação de praças, ciclovias e centros de convivência infantil. Dedica sua vida à construção de espaços mais humanos, seguros e inclusivos.',
+    professional_info: 'Especialista em governança metropolitana, energias renováveis na infraestrutura pública e transparência digital governamental.',
+    quote: '"Uma cidade moderna cuida de todos os seus bairros com a mesma atenção dedicada ao centro financeiro."',
+    image_url: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&auto=format&fit=crop&q=80',
+    is_active: true,
+  },
+};
+
+export const SEED_PROPOSAL_CATEGORIES: ProposalCategory[] = [
+  // Site A
+  { id: 'cat-a-1', site_id: 'site-a-uuid-carlos', name: 'Saúde & Bem-Estar', slug: 'saude', sort_order: 1, is_active: true },
+  { id: 'cat-a-2', site_id: 'site-a-uuid-carlos', name: 'Educação & Tecnologia', slug: 'educacao', sort_order: 2, is_active: true },
+  { id: 'cat-a-3', site_id: 'site-a-uuid-carlos', name: 'Segurança & Cidadania', slug: 'seguranca', sort_order: 3, is_active: true },
+  { id: 'cat-a-4', site_id: 'site-a-uuid-carlos', name: 'Desenvolvimento Econômico', slug: 'economia', sort_order: 4, is_active: true },
+
+  // Site B
+  { id: 'cat-b-1', site_id: 'site-b-uuid-mariana', name: 'Mobilidade & Transporte', slug: 'mobilidade', sort_order: 1, is_active: true },
+  { id: 'cat-b-2', site_id: 'site-b-uuid-mariana', name: 'Meio Ambiente & Clima', slug: 'meio-ambiente', sort_order: 2, is_active: true },
+  { id: 'cat-b-3', site_id: 'site-b-uuid-mariana', name: 'Primeira Infância & Creches', slug: 'infancia', sort_order: 3, is_active: true },
+  { id: 'cat-b-4', site_id: 'site-b-uuid-mariana', name: 'Inovação e Bairros', slug: 'inovacao', sort_order: 4, is_active: true },
+];
+
+export const SEED_PROPOSALS: Proposal[] = [
+  // Site A
+  {
+    id: 'prop-a-1',
+    site_id: 'site-a-uuid-carlos',
+    category_id: 'cat-a-1',
+    title: 'Programa Fila Zero de Especialistas e Exames de Imagem',
+    description: 'Criação de centros regionais de diagnóstico rápido e parcerias estratégicas para zerar o tempo de espera por tomografias, ressonâncias e consultas médicas especializadas.',
+    image_url: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&auto=format&fit=crop&q=80',
+    icon: 'Activity',
+    sort_order: 1,
+    is_published: true,
+    created_at: '2026-02-10T10:00:00Z',
+    updated_at: '2026-08-20T10:00:00Z',
+  },
+  {
+    id: 'prop-a-2',
+    site_id: 'site-a-uuid-carlos',
+    category_id: 'cat-a-2',
+    title: 'Escola Conectada e Bolsas em Inteligência Artificial',
+    description: 'Implementação de laboratórios modernos de robótica e programação em 100% das escolas públicas, com bolsas de incentivo para jovens do ensino médio.',
+    image_url: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&auto=format&fit=crop&q=80',
+    icon: 'Laptop',
+    sort_order: 2,
+    is_published: true,
+    created_at: '2026-02-12T10:00:00Z',
+    updated_at: '2026-08-20T10:00:00Z',
+  },
+  {
+    id: 'prop-a-3',
+    site_id: 'site-a-uuid-carlos',
+    category_id: 'cat-a-4',
+    title: 'Crédito Fácil e Menos Burocracia para o Pequeno Empreendedor',
+    description: 'Linhas de microcrédito orientado com taxa zero para mulheres empreendedoras e jovens abrindo seu primeiro negócio comercial ou de serviços.',
+    image_url: 'https://images.unsplash.com/photo-1556742049-0a67e557b63f?w=600&auto=format&fit=crop&q=80',
+    icon: 'Briefcase',
+    sort_order: 3,
+    is_published: true,
+    created_at: '2026-02-15T10:00:00Z',
+    updated_at: '2026-08-20T10:00:00Z',
+  },
+  {
+    id: 'prop-a-4',
+    site_id: 'site-a-uuid-carlos',
+    category_id: 'cat-a-3',
+    title: 'Monitoramento Inteligente e Iluminação 100% LED nos Bairros',
+    description: 'Integração de câmeras com reconhecimento de placas e inteligência preventiva, revitalizando áreas públicas e corredores comerciais periféricos.',
+    image_url: 'https://images.unsplash.com/photo-1508873696983-2df5293cb32f?w=600&auto=format&fit=crop&q=80',
+    icon: 'Shield',
+    sort_order: 4,
+    is_published: true,
+    created_at: '2026-02-20T10:00:00Z',
+    updated_at: '2026-08-20T10:00:00Z',
+  },
+
+  // Site B
+  {
+    id: 'prop-b-1',
+    site_id: 'site-b-uuid-mariana',
+    category_id: 'cat-b-1',
+    title: 'Tarifa Justa e Ônibus Elétricos Climatizados',
+    description: 'Renovação progressiva da frota com veículos elétricos não poluentes, bilhete único metropolitano integrado e faixa exclusiva expandida.',
+    image_url: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=600&auto=format&fit=crop&q=80',
+    icon: 'Bus',
+    sort_order: 1,
+    is_published: true,
+    created_at: '2026-03-01T10:00:00Z',
+    updated_at: '2026-08-20T10:00:00Z',
+  },
+  {
+    id: 'prop-b-2',
+    site_id: 'site-b-uuid-mariana',
+    category_id: 'cat-b-3',
+    title: 'Vaga Garantida em Creche e Horário Estendido',
+    description: 'Ampliação de vagas na educação infantil com centros modelo de acolhimento funcionando até 19h para apoiar mães e pais trabalhadores.',
+    image_url: 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&auto=format&fit=crop&q=80',
+    icon: 'HeartHandshake',
+    sort_order: 2,
+    is_published: true,
+    created_at: '2026-03-05T10:00:00Z',
+    updated_at: '2026-08-20T10:00:00Z',
+  },
+];
+
+export const SEED_ACTIONS: ActionItem[] = [
+  {
+    id: 'act-a-1',
+    site_id: 'site-a-uuid-carlos',
+    title: 'Inauguração do Centro Integrado de Saúde Preventiva',
+    description: 'Articulação de R$ 12 milhões em emendas para equipar o centro que atende mais de 3.000 pacientes/mês na zona leste.',
+    category: 'Saúde Pública',
+    date: '2026-05-14',
+    municipality: 'São Paulo',
+    image_url: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=600&auto=format&fit=crop&q=80',
+    is_published: true,
+    created_at: '2026-05-14T10:00:00Z',
+  },
+  {
+    id: 'act-a-2',
+    site_id: 'site-a-uuid-carlos',
+    title: 'Entrega de 15 Novas Ambulâncias de Suporte Avançado',
+    description: 'Renovação da frota de resgate de emergência para 8 municípios do interior e região metropolitana.',
+    category: 'Infraestrutura',
+    date: '2026-06-22',
+    municipality: 'Campinas e Região',
+    image_url: 'https://images.unsplash.com/photo-1587745416684-47953f16f02f?w=600&auto=format&fit=crop&q=80',
+    is_published: true,
+    created_at: '2026-06-22T10:00:00Z',
+  },
+  {
+    id: 'act-a-3',
+    site_id: 'site-a-uuid-carlos',
+    title: 'Audiência Pública: Reforma Tributária e Incentivo a Startups',
+    description: 'Debate nacional com especialistas em tecnologia e pequenos empresários para desoneração da folha e simplificação.',
+    category: 'Economia',
+    date: '2026-07-10',
+    municipality: 'Brasília / SP',
+    image_url: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&auto=format&fit=crop&q=80',
+    is_published: true,
+    created_at: '2026-07-10T10:00:00Z',
+  },
+];
+
+export const SEED_EVENTS: CampaignEvent[] = [
+  {
+    id: 'eve-a-1',
+    site_id: 'site-a-uuid-carlos',
+    title: 'Encontro Regional com Lideranças Comunitárias e Profissionais da Saúde',
+    event_date: '2026-09-05',
+    event_time: '19:00',
+    municipality: 'São Paulo',
+    location: 'Auditório Central de Convenções — Av. Paulista, 1500',
+    description: 'Apresentação detalhada das propostas para o fortalecimento da atenção básica e debate aberto de perguntas e respostas.',
+    image_url: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&auto=format&fit=crop&q=80',
+    map_url: 'https://maps.google.com/?q=Av.+Paulista,+1500+São+Paulo',
+    is_published: true,
+    created_at: '2026-08-01T10:00:00Z',
+  },
+  {
+    id: 'eve-a-2',
+    site_id: 'site-a-uuid-carlos',
+    title: 'Caminhada da Cidadania e Escuta nos Bairros',
+    event_date: '2026-09-12',
+    event_time: '09:30',
+    municipality: 'São Bernardo do Campo',
+    location: 'Praça da Matriz — Concentração junto ao coreto',
+    description: 'Diálogo direto com comerciantes e moradores para receber reivindicações e sugestões para o plano de governo.',
+    image_url: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&auto=format&fit=crop&q=80',
+    map_url: 'https://maps.google.com/?q=Praça+da+Matriz+São+Bernardo',
+    is_published: true,
+    created_at: '2026-08-05T10:00:00Z',
+  },
+  {
+    id: 'eve-b-1',
+    site_id: 'site-b-uuid-mariana',
+    title: 'Fórum da Cidade Sustentável e Mobilidade Verde',
+    event_date: '2026-09-08',
+    event_time: '18:30',
+    municipality: 'Curitiba',
+    location: 'Centro Cívico Cultural — Sala Paranaguá',
+    description: 'Palestra com arquitetos urbanistas sobre soluções práticas de transporte público limpo e parques lineares.',
+    image_url: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&auto=format&fit=crop&q=80',
+    map_url: 'https://maps.google.com/?q=Centro+Civico+Curitiba',
+    is_published: true,
+    created_at: '2026-08-10T10:00:00Z',
+  }
+];
+
+export const SEED_NEWS: NewsArticle[] = [
+  {
+    id: 'news-a-1',
+    site_id: 'site-a-uuid-carlos',
+    title: 'Dr. Carlos Guimarães defende novo modelo de financiamento para hospitais filantrópicos',
+    slug: 'novo-modelo-financiamento-hospitais-filantropicos',
+    summary: 'Proposta apresentada busca reajustar a tabela de repasses e garantir recursos perenes para o atendimento à população.',
+    content: `O fortalecimento das Santas Casas e hospitais filantrópicos é um dos eixos prioritários de nossa atuação pública. Em pronunciamento oficial, o Dr. Carlos Guimarães destacou a urgência de uma revisão estrutural no modelo de remuneração dos serviços essenciais.
+
+### Sustentabilidade dos Hospitais Comunitários
+"Não é aceitável que instituições centenárias que salvam vidas todos os dias operem no limite do déficit financeiro", enfatizou o parlamentar. 
+
+O plano de ação compreende:
+* Criação de fundo de estabilização hospitalar;
+* Isenção tributária para compra de equipamentos médicos de alta tecnologia;
+* Descentralização do atendimento oncológico com polos regionais.
+
+A proposta já recebeu apoio de mais de 40 entidades médicas e secretarias de saúde municipais em todo o estado.`,
+    image_url: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800&auto=format&fit=crop&q=80',
+    category: 'Saúde Pública',
+    author: 'Assessoria de Comunicação',
+    published_at: '2026-08-15T14:30:00Z',
+    is_published: true,
+    created_at: '2026-08-15T14:30:00Z',
+    updated_at: '2026-08-15T14:30:00Z',
+  },
+  {
+    id: 'news-a-2',
+    site_id: 'site-a-uuid-carlos',
+    title: 'Plano de Inovação propõe capacitar 50 mil jovens em habilidades digitais e programação',
+    slug: 'plano-inovacao-capacitar-50-mil-jovens-programacao',
+    summary: 'Projeto de incentivo visa criar polos tecnológicos nos bairros e conectar formandos a vagas em empresas do setor de software.',
+    content: `A economia digital é a porta de entrada mais veloz para a mobilidade social da juventude. Durante encontro com lideranças de tecnologia, foi apresentado o programa Conecta Jovem.
+
+### Eixos do Programa Conecta Jovem
+1. **Infraestrutura**: Centros de computação modernos e internet de alta velocidade gratuitos;
+2. **Mentoria**: Parcerias voluntárias com empresas privadas do setor de TI;
+3. **Bolsa Permanência**: Auxílio financeiro para jovens de baixa renda concluírem os cursos de curta duração.
+
+"O futuro do mercado de trabalho exige qualificação técnica. Nosso dever é oferecer as ferramentas necessárias para que nossos jovens liderem essa revolução", pontuou o Dr. Carlos.`,
+    image_url: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=80',
+    category: 'Educação & Tecnologia',
+    author: 'Equipe de Conteúdo',
+    published_at: '2026-08-18T09:15:00Z',
+    is_published: true,
+    created_at: '2026-08-18T09:15:00Z',
+    updated_at: '2026-08-18T09:15:00Z',
+  },
+  {
+    id: 'news-b-1',
+    site_id: 'site-b-uuid-mariana',
+    title: 'Mariana Silveira apresenta diretrizes para plano de mobilidade sustentável e tarifa reduzida',
+    slug: 'diretrizes-plano-mobilidade-sustentavel-tarifa-reduzida',
+    summary: 'Estudo prevê renovação da frota por ônibus elétricos e ampliação das faixas exclusivas em corredores com maior fluxo.',
+    content: `Em coletiva de imprensa, a candidata Mariana Silveira apresentou a metodologia de transição energética do transporte público.
+
+O plano prevê a substituição gradual de 30% da frota por modelos elétricos com zero emissão de poluentes nos dois primeiros anos de mandato, financiado por parcerias público-privadas de baixo custo.
+
+"Transporte de qualidade é direito básico que devolve tempo de vida e convívio familiar para as pessoas", afirmou Mariana.`,
+    image_url: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80',
+    category: 'Mobilidade Urbana',
+    author: 'Assessoria Mariana Silveira',
+    published_at: '2026-08-19T11:00:00Z',
+    is_published: true,
+    created_at: '2026-08-19T11:00:00Z',
+    updated_at: '2026-08-19T11:00:00Z',
+  }
+];
+
+export const SEED_VIDEOS: VideoItem[] = [
+  {
+    id: 'vid-a-1',
+    site_id: 'site-a-uuid-carlos',
+    title: 'Mensagem Oficial de Apresentação e Compromissos',
+    description: 'Dr. Carlos Guimarães compartilha suas motivações, história na medicina e os pilares de seu trabalho público.',
+    youtube_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    thumbnail_url: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&auto=format&fit=crop&q=80',
+    category: 'Institucional',
+    sort_order: 1,
+    is_active: true,
+    created_at: '2026-07-01T10:00:00Z',
+  },
+  {
+    id: 'vid-a-2',
+    site_id: 'site-a-uuid-carlos',
+    title: 'Como podemos zerar a fila do SUS nos municípios?',
+    description: 'Entrevista técnica detalhando a proposta dos Centros Regionais de Diagnóstico e telemedicina integrada.',
+    youtube_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    thumbnail_url: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&auto=format&fit=crop&q=80',
+    category: 'Propostas',
+    sort_order: 2,
+    is_active: true,
+    created_at: '2026-07-15T10:00:00Z',
+  },
+  {
+    id: 'vid-a-3',
+    site_id: 'site-a-uuid-carlos',
+    title: 'Visita às obras da Nova Maternidade Municipal',
+    description: 'Fiscalização e prestação de contas dos recursos estaduais e federais aplicados na saúde da família.',
+    youtube_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    thumbnail_url: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?w=600&auto=format&fit=crop&q=80',
+    category: 'Atuação',
+    sort_order: 3,
+    is_active: true,
+    created_at: '2026-08-01T10:00:00Z',
+  },
+];
+
+export const SEED_GALLERY: GalleryItem[] = [
+  {
+    id: 'gal-a-1',
+    site_id: 'site-a-uuid-carlos',
+    image_url: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?w=800&auto=format&fit=crop&q=80',
+    caption: 'Reunião com médicos e gestores da saúde pública',
+    sort_order: 1,
+    is_active: true,
+    created_at: '2026-07-05T10:00:00Z',
+  },
+  {
+    id: 'gal-a-2',
+    site_id: 'site-a-uuid-carlos',
+    image_url: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop&q=80',
+    caption: 'Grande encontro com a comunidade e lideranças de bairro',
+    sort_order: 2,
+    is_active: true,
+    created_at: '2026-07-12T10:00:00Z',
+  },
+  {
+    id: 'gal-a-3',
+    site_id: 'site-a-uuid-carlos',
+    image_url: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800&auto=format&fit=crop&q=80',
+    caption: 'Debate sobre inovação com empreendedores e jovens universitários',
+    sort_order: 3,
+    is_active: true,
+    created_at: '2026-07-20T10:00:00Z',
+  },
+  {
+    id: 'gal-a-4',
+    site_id: 'site-a-uuid-carlos',
+    image_url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&auto=format&fit=crop&q=80',
+    caption: 'Planejamento estratégico com a equipe técnica',
+    sort_order: 4,
+    is_active: true,
+    created_at: '2026-08-02T10:00:00Z',
+  },
+];
+
+export const SEED_SOCIAL_LINKS: SocialLink[] = [
+  // Site A
+  { id: 'soc-a-1', site_id: 'site-a-uuid-carlos', platform: 'instagram', url: 'https://instagram.com', icon: 'Instagram', sort_order: 1, is_active: true },
+  { id: 'soc-a-2', site_id: 'site-a-uuid-carlos', platform: 'facebook', url: 'https://facebook.com', icon: 'Facebook', sort_order: 2, is_active: true },
+  { id: 'soc-a-3', site_id: 'site-a-uuid-carlos', platform: 'youtube', url: 'https://youtube.com', icon: 'Youtube', sort_order: 3, is_active: true },
+  { id: 'soc-a-4', site_id: 'site-a-uuid-carlos', platform: 'whatsapp', url: 'https://wa.me/5511987654321', icon: 'MessageCircle', sort_order: 4, is_active: true },
+  { id: 'soc-a-5', site_id: 'site-a-uuid-carlos', platform: 'tiktok', url: 'https://tiktok.com', icon: 'Video', sort_order: 5, is_active: true },
+
+  // Site B
+  { id: 'soc-b-1', site_id: 'site-b-uuid-mariana', platform: 'instagram', url: 'https://instagram.com', icon: 'Instagram', sort_order: 1, is_active: true },
+  { id: 'soc-b-2', site_id: 'site-b-uuid-mariana', platform: 'youtube', url: 'https://youtube.com', icon: 'Youtube', sort_order: 2, is_active: true },
+  { id: 'soc-b-3', site_id: 'site-b-uuid-mariana', platform: 'whatsapp', url: 'https://wa.me/5541998887766', icon: 'MessageCircle', sort_order: 3, is_active: true },
+];
+
+export const SEED_CONTACT_SETTINGS: Record<string, ContactSettings> = {
+  'site-a-uuid-carlos': {
+    site_id: 'site-a-uuid-carlos',
+    whatsapp: '(11) 98765-4321',
+    phone: '(11) 3456-7890',
+    email: 'contato@carlosguimaraes.com.br',
+    address: 'Av. Brigadeiro Faria Lima, 2000 - Cj. 84 - Pinheiros',
+    city: 'São Paulo',
+    state: 'SP',
+    instagram: '@drcarlosguimaraes',
+    facebook: '/drcarlosguimaraesoficial',
+    youtube: '@drcarlosguimaraes',
+    tiktok: '@drcarlosguimaraes',
+  },
+  'site-b-uuid-mariana': {
+    site_id: 'site-b-uuid-mariana',
+    whatsapp: '(41) 99888-7766',
+    phone: '(41) 3322-1100',
+    email: 'falecom@marianasilveira.com.br',
+    address: 'Rua XV de Novembro, 850 - Sala 402 - Centro',
+    city: 'Curitiba',
+    state: 'PR',
+    instagram: '@marianasilveirapr',
+    facebook: '/marianasilveiraoficial',
+    youtube: '@marianasilveira',
+    tiktok: '@marianasilveira',
+  }
+};
