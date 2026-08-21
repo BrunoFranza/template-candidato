@@ -343,7 +343,32 @@ export const HomePage: React.FC = () => {
         </section>
       )}
 
-      {/* 10. DIRECT WHATSAPP / CONTACT CTA */}
+      {/* 10. PRESS KIT & DOWNLOADS BANNER */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-10 border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
+          <div className="space-y-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-sky-400">
+              Mobilização & Imprensa
+            </span>
+            <h3 className="text-xl sm:text-2xl font-black">
+              Baixe os Materiais Oficiais de {siteSettings?.candidate_name || 'Campanha'}
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
+              Santinhos digitais, fotos em alta resolução, logos vetoriais e jingles oficiais liberados para download gratuito.
+            </p>
+          </div>
+
+          <Link
+            to="/materiais"
+            className="inline-flex items-center gap-2 px-6 py-3.5 bg-sky-600 hover:bg-sky-500 text-white text-xs sm:text-sm font-bold rounded-2xl shadow-md transition-colors shrink-0"
+          >
+            <span>Acessar Central de Downloads</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
+
+      {/* 11. DIRECT WHATSAPP / CONTACT CTA */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className="rounded-3xl p-8 sm:p-12 text-white text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-8 shadow-xl"

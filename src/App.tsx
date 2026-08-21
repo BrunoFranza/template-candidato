@@ -18,6 +18,7 @@ import { NewsDetailPage } from './pages/public/NewsDetailPage';
 import { VideosPage } from './pages/public/VideosPage';
 import { GalleryPage } from './pages/public/GalleryPage';
 import { ContactPage } from './pages/public/ContactPage';
+import { PressKitPage } from './pages/public/PressKitPage';
 
 // Admin Pages
 import { AdminLoginPage } from './pages/admin/AdminLoginPage';
@@ -108,6 +109,8 @@ export default function App() {
             <Route path="/videos" element={<PublicLayout><VideosPage /></PublicLayout>} />
             <Route path="/galeria" element={<PublicLayout><GalleryPage /></PublicLayout>} />
             <Route path="/fotos" element={<PublicLayout><GalleryPage /></PublicLayout>} />
+            <Route path="/materiais" element={<PublicLayout><PressKitPage /></PublicLayout>} />
+            <Route path="/imprensa" element={<PublicLayout><PressKitPage /></PublicLayout>} />
             <Route path="/contato" element={<PublicLayout><ContactPage /></PublicLayout>} />
             <Route path="/fale-conosco" element={<PublicLayout><ContactPage /></PublicLayout>} />
 

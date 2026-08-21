@@ -73,13 +73,13 @@ export const AdminDashboard: React.FC = () => {
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-sky-50 text-sky-700 text-xs font-bold rounded-full">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Painel Multi-Tenant Oficial</span>
+            <span>Gestão Oficial de Mandato & Presença Digital</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
             Olá, {user?.full_name?.split(' ')[0]}!
           </h1>
           <p className="text-sm text-slate-600">
-            Você está gerenciando o site da campanha: <strong className="text-slate-900">{currentSite?.name}</strong> (Permissão: <span className="uppercase text-sky-600 font-bold">{currentRole}</span>).
+            Você está gerenciando o site oficial de <strong className="text-slate-900">{currentSite?.name}</strong> (Perfil: <span className="uppercase text-sky-600 font-bold">{currentRole}</span>).
           </p>
         </div>
 
@@ -90,38 +90,39 @@ export const AdminDashboard: React.FC = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-bold transition-colors"
           >
-            <span>Abrir Site Público</span>
+            <span>Visualizar Site</span>
             <ExternalLink className="w-3.5 h-3.5" />
           </Link>
 
           <Link
-            to="/admin/propostas"
+            to="/admin/noticias"
             className="inline-flex items-center gap-2 px-4 py-2.5 text-white rounded-xl text-xs font-bold shadow-xs hover:shadow transition-all"
             style={{ backgroundColor: primaryColor }}
           >
             <Plus className="w-3.5 h-3.5" />
-            <span>Nova Proposta</span>
+            <span>Nova Notícia / Ação</span>
           </Link>
         </div>
       </div>
 
-      {/* Multi-tenant Isolation Assurance Box */}
+      {/* Campaign Cloud & Database Status Box */}
       <div className="bg-slate-900 text-white rounded-2xl p-5 border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3.5">
           <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
             <ShieldCheck className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="text-sm font-bold text-slate-100">Isolamento Multi-Tenant RLS Ativo</h4>
+            <h4 className="text-sm font-bold text-slate-100">Banco de Dados e Armazenamento Conectados</h4>
             <p className="text-xs text-slate-400">
-              Site ID: <span className="font-mono text-emerald-400">{currentSite?.id}</span> • Apenas administradores autorizados têm acesso a esta partição.
+              ID da Campanha: <span className="font-mono text-emerald-400">{currentSite?.id}</span> • Domínio: <span className="font-mono text-slate-300">{currentSite?.domain || `${currentSite?.slug}.campanha.digital`}</span>
             </p>
           </div>
         </div>
 
         <div className="flex items-center gap-2 text-xs">
-          <span className="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 font-mono">
-            {isSupabaseConfigured ? 'Supabase Cloud (PostgreSQL)' : 'Local Multi-Tenant Fallback'}
+          <span className="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 font-mono flex items-center gap-1.5">
+            <Database className="w-3.5 h-3.5 text-emerald-400" />
+            {isSupabaseConfigured ? 'Supabase PostgreSQL Cloud' : 'Armazenamento Híbrido Ativo'}
           </span>
         </div>
       </div>

@@ -55,9 +55,8 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
     { name: 'Redes Sociais', path: '/admin/redes-sociais', icon: Share2 },
     { name: 'Contato & WhatsApp', path: '/admin/contato', icon: Phone },
     { name: 'Aparência & Tema', path: '/admin/aparencia', icon: Palette, minRole: 'admin' },
-    { name: 'Configurações', path: '/admin/configuracoes', icon: Settings, minRole: 'admin' },
-    { name: 'Equipe & Usuários', path: '/admin/usuarios', icon: Users, minRole: 'owner' },
-    { name: 'Clientes & Sites', path: '/admin/sites', icon: Layers, minRole: 'owner' },
+    { name: 'Configurações Gerais', path: '/admin/configuracoes', icon: Settings, minRole: 'admin' },
+    { name: 'Equipe & Acessos', path: '/admin/usuarios', icon: Users, minRole: 'owner' },
     { name: 'Banco SQL & RLS', path: '/admin/banco-sql', icon: Database },
   ];
 
@@ -70,23 +69,20 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
 
   return (
     <div className="min-h-screen bg-slate-900 flex flex-col font-sans">
-      {/* Top Banner Multi-tenant status */}
-      <TenantSwitcherBar />
-
       <div className="flex-1 flex overflow-hidden">
         {/* Sidebar for Desktop */}
-        <aside className="hidden lg:flex lg:flex-col w-64 bg-slate-900 border-r border-slate-800 shrink-0">
+        <aside className="hidden lg:flex lg:flex-col w-64 bg-slate-950 border-r border-slate-800/80 shrink-0">
           {/* Active Site Header in Sidebar */}
-          <div className="p-4 border-b border-slate-800 bg-slate-900/50">
+          <div className="p-4 border-b border-slate-800 bg-slate-900/80">
             <div className="flex items-center gap-3">
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-white shadow-xs"
+                className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-white shadow-md text-base"
                 style={{ backgroundColor: primaryColor }}
               >
                 {currentSite?.name.charAt(0) || 'C'}
               </div>
               <div className="truncate">
-                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Site Ativo</p>
+                <p className="text-[10px] font-bold text-sky-400 uppercase tracking-widest">Painel de Mandato</p>
                 <h4 className="text-sm font-bold text-white truncate leading-tight">
                   {currentSite?.name || 'Campanha'}
                 </h4>
@@ -212,6 +208,34 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
               </div>
             </div>
           )}
+
+          {/* Desktop Top Header Bar */}
+          <header className="hidden lg:flex bg-white border-b border-slate-200/80 px-6 py-3.5 items-center justify-between shadow-2xs">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-xs font-bold text-slate-800">
+                  {currentSite?.name}
+                </span>
+              </div>
+              <span className="text-slate-300">|</span>
+              <span className="text-xs text-slate-500 font-mono">
+                {currentSite?.domain || `${currentSite?.slug}.campanha.digital`}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Link
+                to="/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition-colors"
+              >
+                <span>Ver Site Público</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </header>
 
           {/* Main Workspace Body */}
           <main className="flex-1 p-4 sm:p-6 lg:p-8">

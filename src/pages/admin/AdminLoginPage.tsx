@@ -6,7 +6,7 @@ import { useTenant } from '../../context/TenantContext';
 
 export const AdminLoginPage: React.FC = () => {
   const { login, switchUser, error } = useAuth();
-  const { currentSite } = useTenant();
+  const { currentSite, siteSettings } = useTenant();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('admin@carlossilva.com.br');
@@ -33,17 +33,19 @@ export const AdminLoginPage: React.FC = () => {
     navigate('/admin');
   };
 
+  const candidateName = siteSettings?.candidate_name || currentSite?.name || 'Campanha Oficial';
+
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center space-y-3">
-        <div className="w-12 h-12 rounded-2xl bg-sky-600 text-white flex items-center justify-center mx-auto shadow-lg shadow-sky-600/30">
-          <Layers className="w-6 h-6" />
+        <div className="w-14 h-14 rounded-2xl bg-sky-600 text-white flex items-center justify-center mx-auto shadow-lg shadow-sky-600/30 font-bold text-xl">
+          {candidateName.charAt(0)}
         </div>
         <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-          Painel Administrativo
+          Painel de Gestão
         </h2>
         <p className="text-xs sm:text-sm text-slate-400">
-          Plataforma White-Label de Presença Digital Eleitoral
+          Site Oficial de <span className="text-sky-400 font-bold">{candidateName}</span>
         </p>
       </div>
 

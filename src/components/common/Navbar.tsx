@@ -24,12 +24,14 @@ export const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Início', path: '/' },
+    { name: 'Biografia', path: '/biografia' },
     { name: 'Propostas', path: '/propostas' },
     { name: 'Atuação', path: '/atuacao' },
     { name: 'Agenda', path: '/agenda' },
     { name: 'Notícias', path: '/noticias' },
     { name: 'Vídeos', path: '/videos' },
     { name: 'Galeria', path: '/galeria' },
+    { name: 'Materiais', path: '/materiais' },
     { name: 'Contato', path: '/contato' },
   ];
 

@@ -30,16 +30,26 @@ export const TenantProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       const sites = await dataStore.getSites();
       setAllSites(sites);
 
-      // 1. Check URL query params (?site=slug)
+      // 1. Check ENV variable (Primary for standalone deploy)
+      const envSiteId = import.meta.env.VITE_SITE_ID;
+
+      // 2. Check URL query params (?site=slug or ?tenant=slug) for preview/dev
       const urlParams = new URLSearchParams(window.location.search);
-      const siteQuery = urlParams.get('site');
+      const siteQuery = urlParams.get('site') || urlParams.get('tenant');
 
       let targetSite: Site | null = null;
+
+      // Prioridade 1: query param explícito (útil para testes em desenvolvimento)
       if (siteQuery) {
         targetSite = sites.find(s => s.slug === siteQuery || s.id === siteQuery) || null;
       }
 
-      // 2. Check localStorage saved site
+      // Prioridade 2: VITE_SITE_ID configurado no .env do deploy
+      if (!targetSite && envSiteId) {
+        targetSite = sites.find(s => s.id === envSiteId || s.slug === envSiteId) || null;
+      }
+
+      // Prioridade 3: LocalStorage salvo anteriormente
       if (!targetSite) {
         const savedSiteId = localStorage.getItem('wl_active_site_id');
         if (savedSiteId) {
@@ -47,12 +57,12 @@ export const TenantProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         }
       }
 
-      // 3. Check accessible sites from user
+      // Prioridade 4: Primeiro site acessível do usuário
       if (!targetSite && accessibleSites.length > 0) {
         targetSite = accessibleSites[0].site;
       }
 
-      // 4. Default to first site
+      // Prioridade 5: Primeiro site disponível
       if (!targetSite && sites.length > 0) {
         targetSite = sites[0];
       }
@@ -146,3 +156,6 @@ export const useTenant = () => {
   }
   return context;
 };
+
+// Alias semântico para uso em sites individuais
+export const useCampaign = useTenant;
