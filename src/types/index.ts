@@ -82,6 +82,7 @@ export interface HeroSection {
   secondary_cta_link?: string;
   hero_image_url?: string;
   background_image_url?: string;
+  background_video_url?: string;
   badge_text?: string;
   is_active?: boolean;
   candidate_name?: string;

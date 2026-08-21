@@ -20,6 +20,16 @@ import {
 
 export const SEED_SITES: Site[] = [
   {
+    id: 'site-ney-amorim',
+    name: 'Ney Amorim — Deputado Federal MDB/AC',
+    slug: 'ney-amorim',
+    domain: 'neyamorim.com.br',
+    status: 'active',
+    is_active: true,
+    created_at: '2026-01-10T10:00:00Z',
+    updated_at: '2026-08-21T00:00:00Z',
+  },
+  {
     id: 'site-a-uuid-carlos',
     name: 'Campanha Dr. Carlos Guimarães',
     slug: 'carlos-guimaraes',
@@ -106,9 +116,41 @@ export const SEED_SITE_MEMBERS: SiteMember[] = [
     role: 'owner',
     created_at: '2026-01-01T10:00:00Z',
   },
+  {
+    id: 'mem-ney-owner',
+    site_id: 'site-ney-amorim',
+    user_id: 'user-admin-a-uuid',
+    role: 'owner',
+    created_at: '2026-01-10T10:00:00Z',
+  },
+  {
+    id: 'mem-ney-superadmin',
+    site_id: 'site-ney-amorim',
+    user_id: 'user-superadmin-uuid',
+    role: 'owner',
+    created_at: '2026-01-10T10:00:00Z',
+  },
 ];
 
 export const SEED_SITE_SETTINGS: Record<string, SiteSettings> = {
+  'site-ney-amorim': {
+    site_id: 'site-ney-amorim',
+    candidate_name: 'Ney Amorim',
+    position: 'Deputado Federal',
+    slogan: 'Trabalho, compromisso e união pelo futuro do Acre',
+    party: 'MDB — Movimento Democrático Brasileiro',
+    candidate_number: '1577',
+    coalition: 'Coligação Acre em Frente (MDB / Solidariedade / Avante)',
+    municipality: 'Rio Branco',
+    state: 'AC',
+    phone: '',
+    whatsapp: '',
+    email: 'contato@neyamorim.com.br',
+    domain: 'neyamorim.com.br',
+    logo_url: '',
+    legal_information: 'Eleição 2026 — Ney Amorim, Deputado Federal pelo Acre (AC) — MDB 1577. Prestação de Contas conforme legislação eleitoral vigente (TSE).',
+    cnpj: '',
+  },
   'site-a-uuid-carlos': {
     site_id: 'site-a-uuid-carlos',
     candidate_name: 'Dr. Carlos Guimarães',
@@ -148,6 +190,16 @@ export const SEED_SITE_SETTINGS: Record<string, SiteSettings> = {
 };
 
 export const SEED_THEME_SETTINGS: Record<string, ThemeSettings> = {
+  'site-ney-amorim': {
+    site_id: 'site-ney-amorim',
+    primary_color: '#1a6b3a',   // Verde Amazônia — referência à floresta e à bandeira do Acre
+    secondary_color: '#0d2b4e', // Azul profundo — referência ao céu e ao Rio Acre
+    accent_color: '#f5c518',    // Amarelo ouro — contraste e energia
+    button_style: 'rounded-full',
+    font_family: 'Plus Jakarta Sans',
+    theme_mode: 'light',
+    preset_name: 'acre-verde',
+  },
   'site-a-uuid-carlos': {
     site_id: 'site-a-uuid-carlos',
     primary_color: '#0284c7', // Sky 600
@@ -171,6 +223,20 @@ export const SEED_THEME_SETTINGS: Record<string, ThemeSettings> = {
 };
 
 export const SEED_HERO: Record<string, HeroSection> = {
+  'site-ney-amorim': {
+    site_id: 'site-ney-amorim',
+    title: 'Trabalho, Compromisso e União pelo Futuro do Acre',
+    subtitle: 'Um acreano que luta pelo desenvolvimento regional, pela segurança da nossa gente, pelo agronegócio e pelos empregos que o Acre merece ter.',
+    candidate_name: 'Ney Amorim',
+    position: 'Deputado Federal pelo Acre — 1577',
+    image_url: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&auto=format&fit=crop&q=80',
+    primary_button_text: 'Conheça o Plano de Trabalho',
+    primary_button_url: '/propostas',
+    secondary_button_text: 'Fale Conosco',
+    secondary_button_url: '/contato',
+    badge_text: 'MDB 1577 — Deputado Federal AC',
+    is_active: true,
+  },
   'site-a-uuid-carlos': {
     site_id: 'site-a-uuid-carlos',
     title: 'Compromisso com o Futuro, Saúde de Qualidade e Educação Tecnológica',
@@ -202,6 +268,48 @@ export const SEED_HERO: Record<string, HeroSection> = {
 };
 
 export const SEED_INDICATORS: Indicator[] = [
+  // Ney Amorim - Acre
+  {
+    id: 'ind-ney-1',
+    site_id: 'site-ney-amorim',
+    title: 'Municípios do Acre',
+    value: '22',
+    description: 'Compromisso com cada um dos 22 municípios acreanos, do Alto Acre ao Juruá',
+    icon: 'MapPin',
+    sort_order: 1,
+    is_active: true,
+  },
+  {
+    id: 'ind-ney-2',
+    site_id: 'site-ney-amorim',
+    title: 'Desenvolvimento e Obras',
+    value: 'R$ 150M+',
+    description: 'Meta de recursos e emendas federais para infraestrutura, saneamento e pontes',
+    icon: 'TrendingUp',
+    sort_order: 2,
+    is_active: true,
+  },
+  {
+    id: 'ind-ney-3',
+    site_id: 'site-ney-amorim',
+    title: 'Apoio ao Produtor Rural',
+    value: '100%',
+    description: 'Incentivo contínuo ao agronegócio sustentável e à agricultura familiar do Acre',
+    icon: 'ShieldCheck',
+    sort_order: 3,
+    is_active: true,
+  },
+  {
+    id: 'ind-ney-4',
+    site_id: 'site-ney-amorim',
+    title: 'Presença e Escuta',
+    value: 'Forte',
+    description: 'Gabinete aberto e diálogo permanente com as lideranças e o povo do Acre',
+    icon: 'Users',
+    sort_order: 4,
+    is_active: true,
+  },
+
   // Site A
   {
     id: 'ind-a-1',
@@ -278,6 +386,16 @@ export const SEED_INDICATORS: Indicator[] = [
 ];
 
 export const SEED_ABOUT: Record<string, AboutSection> = {
+  'site-ney-amorim': {
+    site_id: 'site-ney-amorim',
+    title: 'Conheça Ney Amorim',
+    biography: 'Ney Amorim é uma liderança respeitada e com sólida trajetória de serviços prestados ao Estado do Acre. Com vasta experiência na vida pública, incluindo sua marcante presidência na Assembleia Legislativa do Acre (ALEAC), sempre pautou sua atuação pela escuta atenta, pelo diálogo construtivo e pela busca incansável de soluções para os problemas do povo acreano.',
+    trajectory: 'Construiu sua carreira ouvindo as comunidades de Rio Branco, Cruzeiro do Sul, Sena Madureira, Tarauacá, Brasileia e de todos os cantos do nosso estado. Sua jornada política é marcada pela lealdade, pelo respeito aos produtores rurais, pelo apoio aos trabalhadores e pelo compromisso com o progresso do Acre.',
+    professional_info: 'Com profunda capacidade de articulação política em Brasília e amplo conhecimento das necessidades locais, Ney Amorim representa a força, a coragem e a união necessárias para defender os interesses do Acre no Congresso Nacional.',
+    quote: '"O Acre precisa de união, trabalho sério e representatividade forte em Brasília para garantir os investimentos que transformam a vida das nossas famílias."',
+    image_url: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&auto=format&fit=crop&q=80',
+    is_active: true,
+  },
   'site-a-uuid-carlos': {
     site_id: 'site-a-uuid-carlos',
     title: 'Conheça o Dr. Carlos Guimarães',
@@ -301,6 +419,12 @@ export const SEED_ABOUT: Record<string, AboutSection> = {
 };
 
 export const SEED_PROPOSAL_CATEGORIES: ProposalCategory[] = [
+  // Ney Amorim - Acre
+  { id: 'cat-ney-1', site_id: 'site-ney-amorim', name: 'Desenvolvimento & Infraestrutura', slug: 'infraestrutura', sort_order: 1, is_active: true },
+  { id: 'cat-ney-2', site_id: 'site-ney-amorim', name: 'Segurança Pública & Apoio Policial', slug: 'seguranca', sort_order: 2, is_active: true },
+  { id: 'cat-ney-3', site_id: 'site-ney-amorim', name: 'Agronegócio Sustentável & Produtor Rural', slug: 'agronegocio', sort_order: 3, is_active: true },
+  { id: 'cat-ney-4', site_id: 'site-ney-amorim', name: 'Emprego, Renda & Empreendedorismo', slug: 'emprego-renda', sort_order: 4, is_active: true },
+
   // Site A
   { id: 'cat-a-1', site_id: 'site-a-uuid-carlos', name: 'Saúde & Bem-Estar', slug: 'saude', sort_order: 1, is_active: true },
   { id: 'cat-a-2', site_id: 'site-a-uuid-carlos', name: 'Educação & Tecnologia', slug: 'educacao', sort_order: 2, is_active: true },
@@ -315,6 +439,60 @@ export const SEED_PROPOSAL_CATEGORIES: ProposalCategory[] = [
 ];
 
 export const SEED_PROPOSALS: Proposal[] = [
+  // Ney Amorim - Acre
+  {
+    id: 'prop-ney-1',
+    site_id: 'site-ney-amorim',
+    category_id: 'cat-ney-1',
+    title: 'Infraestrutura Integrada e Conexão dos Municípios Acreanos',
+    description: 'Destinação de emendas de grande porte para recuperação de rodovias federais e estaduais (BR-364 e BR-317), construção de pontes, asfaltamento de ramais e garantia de trafegabilidade o ano inteiro.',
+    image_url: 'https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?w=600&auto=format&fit=crop&q=80',
+    icon: 'TrendingUp',
+    sort_order: 1,
+    is_published: true,
+    created_at: '2026-01-10T10:00:00Z',
+    updated_at: '2026-08-21T00:00:00Z',
+  },
+  {
+    id: 'prop-ney-2',
+    site_id: 'site-ney-amorim',
+    category_id: 'cat-ney-2',
+    title: 'Fortalecimento da Segurança e Valorização das Forças Policiais',
+    description: 'Aporte de recursos para modernização de viaturas, armamento, tecnologia de inteligência, controle de fronteiras e valorização salarial e estrutural das Polícias Civil, Militar e Penal do Acre.',
+    image_url: 'https://images.unsplash.com/photo-1508873696983-2df5293cb32f?w=600&auto=format&fit=crop&q=80',
+    icon: 'Shield',
+    sort_order: 2,
+    is_published: true,
+    created_at: '2026-01-10T10:00:00Z',
+    updated_at: '2026-08-21T00:00:00Z',
+  },
+  {
+    id: 'prop-ney-3',
+    site_id: 'site-ney-amorim',
+    category_id: 'cat-ney-3',
+    title: 'Incentivo ao Agronegócio Sustentável e Apoio aos Produtores Rurais',
+    description: 'Criação de linhas de crédito facilitado, mecanização agrícola para pequenas e médias propriedades, assistência técnica contínua e apoio ao escoamento da produção da agricultura familiar.',
+    image_url: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=600&auto=format&fit=crop&q=80',
+    icon: 'CheckCircle2',
+    sort_order: 3,
+    is_published: true,
+    created_at: '2026-01-10T10:00:00Z',
+    updated_at: '2026-08-21T00:00:00Z',
+  },
+  {
+    id: 'prop-ney-4',
+    site_id: 'site-ney-amorim',
+    category_id: 'cat-ney-4',
+    title: 'Geração de Emprego, Renda e Fomento ao Empreendedorismo Local',
+    description: 'Desoneração para abertura de pequenas empresas, polos de qualificação técnica para jovens nos bairros e atração de indústrias e investimentos privados para o Acre.',
+    image_url: 'https://images.unsplash.com/photo-1556742049-0a67e557b63f?w=600&auto=format&fit=crop&q=80',
+    icon: 'Briefcase',
+    sort_order: 4,
+    is_published: true,
+    created_at: '2026-01-10T10:00:00Z',
+    updated_at: '2026-08-21T00:00:00Z',
+  },
+
   // Site A
   {
     id: 'prop-a-1',
@@ -399,6 +577,45 @@ export const SEED_PROPOSALS: Proposal[] = [
 ];
 
 export const SEED_ACTIONS: ActionItem[] = [
+  // Ney Amorim - Acre
+  {
+    id: 'act-ney-1',
+    site_id: 'site-ney-amorim',
+    title: 'Articulação para Recuperação de Trechos Críticos da BR-364',
+    description: 'Encontro com o Ministério dos Transportes e DNIT cobrando celeridade e recursos contínuos para a manutenção da espinha dorsal do transporte no Acre.',
+    category: 'Infraestrutura',
+    date: '2026-06-10',
+    municipality: 'Rio Branco e Sena Madureira',
+    image_url: 'https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?w=600&auto=format&fit=crop&q=80',
+    is_published: true,
+    created_at: '2026-06-10T10:00:00Z',
+  },
+  {
+    id: 'act-ney-2',
+    site_id: 'site-ney-amorim',
+    title: 'Apoio à Cooperativa de Produtores Rurais e Mecanização Agrícola',
+    description: 'Entrega de equipamentos agrícolas e incentivo a programas de escoamento da produção rural da agricultura familiar.',
+    category: 'Agronegócio Sustentável',
+    date: '2026-07-05',
+    municipality: 'Cruzeiro do Sul e Vale do Juruá',
+    image_url: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=600&auto=format&fit=crop&q=80',
+    is_published: true,
+    created_at: '2026-07-05T10:00:00Z',
+  },
+  {
+    id: 'act-ney-3',
+    site_id: 'site-ney-amorim',
+    title: 'Audiência de Fortalecimento da Segurança nas Fronteiras',
+    description: 'Reunião estratégica com representantes das polícias para destinação de recursos em tecnologia, inteligência e reforço de efetivo.',
+    category: 'Segurança Pública',
+    date: '2026-07-28',
+    municipality: 'Brasileia e Epitaciolândia',
+    image_url: 'https://images.unsplash.com/photo-1508873696983-2df5293cb32f?w=600&auto=format&fit=crop&q=80',
+    is_published: true,
+    created_at: '2026-07-28T10:00:00Z',
+  },
+
+  // Site A
   {
     id: 'act-a-1',
     site_id: 'site-a-uuid-carlos',
@@ -438,6 +655,37 @@ export const SEED_ACTIONS: ActionItem[] = [
 ];
 
 export const SEED_EVENTS: CampaignEvent[] = [
+  // Ney Amorim - Acre
+  {
+    id: 'eve-ney-1',
+    site_id: 'site-ney-amorim',
+    title: 'Grande Encontro da União pelo Futuro do Acre',
+    event_date: '2026-09-08',
+    event_time: '18:30',
+    municipality: 'Rio Branco',
+    location: 'Espaço de Eventos — Av. Ceará, Centro',
+    description: 'Apresentação das metas prioritárias de mandato, com presença de lideranças comunitárias e produtores de todo o estado.',
+    image_url: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&auto=format&fit=crop&q=80',
+    map_url: 'https://maps.google.com/?q=Rio+Branco+Acre',
+    is_published: true,
+    created_at: '2026-08-01T10:00:00Z',
+  },
+  {
+    id: 'eve-ney-2',
+    site_id: 'site-ney-amorim',
+    title: 'Reunião com Produtores e Empreendedores do Vale do Juruá',
+    event_date: '2026-09-15',
+    event_time: '10:00',
+    municipality: 'Cruzeiro do Sul',
+    location: 'Associação Comercial do Juruá',
+    description: 'Diálogo sobre crédito agrícola sustentável, melhorias na malha viária e geração de novos postos de trabalho.',
+    image_url: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&auto=format&fit=crop&q=80',
+    map_url: 'https://maps.google.com/?q=Cruzeiro+do+Sul+Acre',
+    is_published: true,
+    created_at: '2026-08-05T10:00:00Z',
+  },
+
+  // Site A
   {
     id: 'eve-a-1',
     site_id: 'site-a-uuid-carlos',
@@ -483,6 +731,49 @@ export const SEED_EVENTS: CampaignEvent[] = [
 ];
 
 export const SEED_NEWS: NewsArticle[] = [
+  // Ney Amorim - Acre
+  {
+    id: 'news-ney-1',
+    site_id: 'site-ney-amorim',
+    title: 'Ney Amorim defende pacote de investimentos federais para a malha viária e ramais produtivos do Acre',
+    slug: 'ney-amorim-defende-investimentos-malha-viaria-acre',
+    summary: 'Proposta prioritária busca garantir recursos contínuos para a BR-364 e a interligação de comunidades isoladas.',
+    content: `A recuperação da infraestrutura de transportes é a principal chave para o desenvolvimento econômico do Acre. Em encontro com lideranças, Ney Amorim destacou que a BR-364 precisa de atenção permanente e de um plano de obras definitivo.
+
+### Prioridade para as Rodovias e Ramais
+"O povo acreano não pode mais sofrer com o isolamento e com o custo elevado do frete. Vamos lutar em Brasília para que os recursos cheguem com pontualidade e transparência", declarou Ney.
+
+Principais metas:
+* Recuperação e manutenção perene da BR-364 e BR-317;
+* Pavimentação e drenagem de ramais de produção agrícola;
+* Pontes de concreto para garantir escoamento da safra o ano inteiro.`,
+    image_url: 'https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?w=800&auto=format&fit=crop&q=80',
+    category: 'Infraestrutura',
+    author: 'Assessoria Ney Amorim',
+    published_at: '2026-08-20T10:00:00Z',
+    is_published: true,
+    created_at: '2026-08-20T10:00:00Z',
+    updated_at: '2026-08-20T10:00:00Z',
+  },
+  {
+    id: 'news-ney-2',
+    site_id: 'site-ney-amorim',
+    title: 'Fortalecimento da segurança pública nas cidades e fronteiras é pilar central de propostas',
+    slug: 'fortalecimento-seguranca-publica-fronteiras-acre',
+    summary: 'Plano inclui destinação de verbas para inteligência, modernização das polícias e apoio aos profissionais de segurança.',
+    content: `A segurança das famílias acreanas exige integração entre forças estaduais e federais. Ney Amorim reafirma o compromisso de buscar no Congresso Nacional os recursos necessários para equipar as polícias Civil, Militar e Penal.
+
+"Nossos policiais são heróis que precisam de condições dignas, equipamentos modernos e valorização profissional para proteger a nossa sociedade", ressaltou.`,
+    image_url: 'https://images.unsplash.com/photo-1508873696983-2df5293cb32f?w=800&auto=format&fit=crop&q=80',
+    category: 'Segurança Pública',
+    author: 'Assessoria Ney Amorim',
+    published_at: '2026-08-19T14:00:00Z',
+    is_published: true,
+    created_at: '2026-08-19T14:00:00Z',
+    updated_at: '2026-08-19T14:00:00Z',
+  },
+
+  // Site A
   {
     id: 'news-a-1',
     site_id: 'site-a-uuid-carlos',
@@ -552,6 +843,33 @@ O plano prevê a substituição gradual de 30% da frota por modelos elétricos c
 ];
 
 export const SEED_VIDEOS: VideoItem[] = [
+  // Ney Amorim - Acre
+  {
+    id: 'vid-ney-1',
+    site_id: 'site-ney-amorim',
+    title: 'Mensagem pelo Futuro do Acre — Ney Amorim 1577',
+    description: 'Conheça o compromisso de trabalho, união e representatividade forte para o Acre em Brasília.',
+    youtube_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    thumbnail_url: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&auto=format&fit=crop&q=80',
+    category: 'Institucional',
+    sort_order: 1,
+    is_active: true,
+    created_at: '2026-07-01T10:00:00Z',
+  },
+  {
+    id: 'vid-ney-2',
+    site_id: 'site-ney-amorim',
+    title: 'Nossas Propostas para o Agronegócio e o Produtor Rural Acreano',
+    description: 'Como o mandato vai apoiar a agricultura familiar, maquinários e linhas de crédito no campo.',
+    youtube_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    thumbnail_url: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=600&auto=format&fit=crop&q=80',
+    category: 'Propostas',
+    sort_order: 2,
+    is_active: true,
+    created_at: '2026-07-15T10:00:00Z',
+  },
+
+  // Site A
   {
     id: 'vid-a-1',
     site_id: 'site-a-uuid-carlos',
@@ -591,6 +909,45 @@ export const SEED_VIDEOS: VideoItem[] = [
 ];
 
 export const SEED_GALLERY: GalleryItem[] = [
+  // Ney Amorim - Acre
+  {
+    id: 'gal-ney-1',
+    site_id: 'site-ney-amorim',
+    image_url: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop&q=80',
+    caption: 'Grande encontro com lideranças comunitárias e apoiadores no Acre',
+    sort_order: 1,
+    is_active: true,
+    created_at: '2026-07-05T10:00:00Z',
+  },
+  {
+    id: 'gal-ney-2',
+    site_id: 'site-ney-amorim',
+    image_url: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&auto=format&fit=crop&q=80',
+    caption: 'Visita aos produtores rurais e diálogo com a agricultura familiar',
+    sort_order: 2,
+    is_active: true,
+    created_at: '2026-07-12T10:00:00Z',
+  },
+  {
+    id: 'gal-ney-3',
+    site_id: 'site-ney-amorim',
+    image_url: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800&auto=format&fit=crop&q=80',
+    caption: 'Reunião estratégica sobre desenvolvimento regional e geração de empregos',
+    sort_order: 3,
+    is_active: true,
+    created_at: '2026-07-20T10:00:00Z',
+  },
+  {
+    id: 'gal-ney-4',
+    site_id: 'site-ney-amorim',
+    image_url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&auto=format&fit=crop&q=80',
+    caption: 'Planejamento e estruturação do plano de metas para o Acre',
+    sort_order: 4,
+    is_active: true,
+    created_at: '2026-08-02T10:00:00Z',
+  },
+
+  // Site A
   {
     id: 'gal-a-1',
     site_id: 'site-a-uuid-carlos',
@@ -630,6 +987,11 @@ export const SEED_GALLERY: GalleryItem[] = [
 ];
 
 export const SEED_SOCIAL_LINKS: SocialLink[] = [
+  // Ney Amorim - Acre
+  { id: 'soc-ney-1', site_id: 'site-ney-amorim', platform: 'instagram', url: 'https://instagram.com', icon: 'Instagram', sort_order: 1, is_active: true },
+  { id: 'soc-ney-2', site_id: 'site-ney-amorim', platform: 'facebook', url: 'https://facebook.com', icon: 'Facebook', sort_order: 2, is_active: true },
+  { id: 'soc-ney-3', site_id: 'site-ney-amorim', platform: 'youtube', url: 'https://youtube.com', icon: 'Youtube', sort_order: 3, is_active: true },
+
   // Site A
   { id: 'soc-a-1', site_id: 'site-a-uuid-carlos', platform: 'instagram', url: 'https://instagram.com', icon: 'Instagram', sort_order: 1, is_active: true },
   { id: 'soc-a-2', site_id: 'site-a-uuid-carlos', platform: 'facebook', url: 'https://facebook.com', icon: 'Facebook', sort_order: 2, is_active: true },
@@ -644,6 +1006,19 @@ export const SEED_SOCIAL_LINKS: SocialLink[] = [
 ];
 
 export const SEED_CONTACT_SETTINGS: Record<string, ContactSettings> = {
+  'site-ney-amorim': {
+    site_id: 'site-ney-amorim',
+    whatsapp: '',
+    phone: '',
+    email: 'contato@neyamorim.com.br',
+    address: 'Comitê Central — Rio Branco',
+    city: 'Rio Branco',
+    state: 'AC',
+    instagram: '@neyamorimac',
+    facebook: '/neyamorimac',
+    youtube: '@neyamorimac',
+    tiktok: '@neyamorimac',
+  },
   'site-a-uuid-carlos': {
     site_id: 'site-a-uuid-carlos',
     whatsapp: '(11) 98765-4321',
