@@ -54,7 +54,6 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
     { name: 'Galeria de Fotos', path: '/admin/galeria', icon: Image },
     { name: 'Redes Sociais', path: '/admin/redes-sociais', icon: Share2 },
     { name: 'Contato & WhatsApp', path: '/admin/contato', icon: Phone },
-    { name: 'Aparência & Tema', path: '/admin/aparencia', icon: Palette, minRole: 'admin' },
     { name: 'Configurações Gerais', path: '/admin/configuracoes', icon: Settings, minRole: 'admin' },
     { name: 'Equipe & Acessos', path: '/admin/usuarios', icon: Users, minRole: 'owner' },
     { name: 'Banco SQL & RLS', path: '/admin/banco-sql', icon: Database },

@@ -133,8 +133,8 @@ export default function App() {
             <Route path="/admin/redes" element={<ProtectedRoute><AdminSocialPage /></ProtectedRoute>} />
             <Route path="/admin/redes-sociais" element={<ProtectedRoute><AdminSocialPage /></ProtectedRoute>} />
             <Route path="/admin/contato" element={<ProtectedRoute><AdminContactPage /></ProtectedRoute>} />
-            <Route path="/admin/tema" element={<ProtectedRoute><AdminThemePage /></ProtectedRoute>} />
-            <Route path="/admin/aparencia" element={<ProtectedRoute><AdminThemePage /></ProtectedRoute>} />
+            <Route path="/admin/tema" element={<Navigate to="/admin" replace />} />
+            <Route path="/admin/aparencia" element={<Navigate to="/admin" replace />} />
             <Route path="/admin/configuracoes" element={<ProtectedRoute><AdminSettingsPage /></ProtectedRoute>} />
             <Route path="/admin/geral" element={<ProtectedRoute><AdminSettingsPage /></ProtectedRoute>} />
             <Route path="/admin/usuarios" element={<ProtectedRoute><AdminUsersPage /></ProtectedRoute>} />
