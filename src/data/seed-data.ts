@@ -230,6 +230,7 @@ export const SEED_HERO: Record<string, HeroSection> = {
     candidate_name: 'Ney Amorim',
     position: 'Deputado Federal pelo Acre — 1577',
     image_url: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?w=800&auto=format&fit=crop&q=80',
+    background_video_url: '/hero.mp4',
     primary_button_text: 'Conheça o Plano de Trabalho',
     primary_button_url: '/propostas',
     secondary_button_text: 'Fale Conosco',
