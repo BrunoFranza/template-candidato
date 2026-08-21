@@ -207,6 +207,23 @@ export const AdminHeroPage: React.FC = () => {
               onUploadSuccess={(url) => setHero({ ...hero, image_url: url })}
             />
           </div>
+
+          <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xs space-y-4">
+            <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-emerald-600" />
+              <span>Vídeo de Fundo no Hero (Loop Silencioso)</span>
+            </h3>
+            <p className="text-xs text-slate-500">
+              Caminho local (ex: <code className="text-sky-600 font-mono">/hero.mp4</code>) ou link direto de vídeo MP4 em nuvem.
+            </p>
+            <input
+              type="text"
+              placeholder="/hero.mp4"
+              value={hero.background_video_url || ''}
+              onChange={(e) => setHero({ ...hero, background_video_url: e.target.value })}
+              className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white font-mono"
+            />
+          </div>
         </div>
       </form>
     </div>

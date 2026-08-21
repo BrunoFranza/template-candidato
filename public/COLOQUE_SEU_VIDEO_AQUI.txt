@@ -1,1 +1,0 @@
-Coloque o arquivo hero.mp4 nesta pasta para rodar no fundo do site!
